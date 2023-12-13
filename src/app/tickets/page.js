@@ -6,7 +6,7 @@ import Link from 'next/link'
 const Tickets = () => {
   return (
     <div><h1 className='tx-center'>Tickets</h1>
-      <Link href='/create'>Создать пост</Link>
+      <Link href='tickets/create'>Создать пост</Link>
       <Suspense fallback={<Loading/>}>
         <TicketList/>
         </Suspense>
