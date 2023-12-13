@@ -18,6 +18,10 @@ a{
   display: flex;
   justify-content: center;
 }
+.flex{
+  display: flex;
+  align-items: center;
+}
 .block_info{
   padding: 10px;
     border-radius: 10px;
