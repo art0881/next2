@@ -11,8 +11,8 @@ const Navbar = () => {
     <header >
       <div className= {css.flexNavbar}> 
         <div>Лого</div>
-        <div><Link className={`${pathname === '/' ? 'active' : ''}`} href='/' >Home</Link>
-        <Link className={` ${pathname === '/tickets' ? 'active' : ''}`} href='/tickets'>Tickets</Link>
+        <div><Link className={`${pathname === '/' ? 'active' : ''}`} href='/' >Главная</Link>
+        <Link className={` ${pathname === '/tickets' ? 'active' : ''}`} href='/tickets'>Посты</Link>
         </div></div>
     </header>
   )

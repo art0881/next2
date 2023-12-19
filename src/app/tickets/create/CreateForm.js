@@ -13,7 +13,7 @@ export default function CreateForm() {
         e.preventDefault();
         setLoading(true);
         const form = {
-          title,body, user_email:'ewreg@mail.ru'
+          title,body
         }
         const res = await fetch('http://localhost:4000/tickets',{
             method:"Post",
