@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react'
 import { useRouter } from 'next/navigation';
-
+import css from '../tickets.module.css';
 export default function CreateForm() {
     const router = useRouter();
     const [title,setTitle] = useState('');
@@ -29,16 +29,17 @@ export default function CreateForm() {
     }
   return (
     <>
-    <form onSubmit={Submit}>
-      <h3>Напиши заголовок</h3>
+    <div className={css.block_create}>
+    <form className="tx-center" onSubmit={Submit}>
+      <h3>Заголовок</h3>
       <input required type='text' value={title} onChange={(e)=>{setTitle(e.target.value)}} />
-      <h3>Напиши Текс</h3>
-      <input required type='text' value={body} onChange={(e)=>{setBody(e.target.value)}} />
-      <button disabled={loading}>
+      <h3>Текс</h3>
+      <input required type='text' value={body} onChange={(e)=>{setBody(e.target.value)}} /><br/><br/>
+      <button className='button' disabled={loading}>
         {loading && <span>Загружается...</span>}
         {!loading && <span>Отправить</span>}
         </button>
-    </form>
+    </form></div>
     </>
   )
 }

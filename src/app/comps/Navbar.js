@@ -8,9 +8,9 @@ import { usePathname } from 'next/navigation'
 const Navbar = () => {
    const pathname = usePathname()
   return (
-    <header >
+    <header className='header'>
       <div className= {css.flexNavbar}> 
-        <div>Лого</div>
+        <div><img src='/logo.png'></img></div>
         <div><Link className={`${pathname === '/' ? 'active' : ''}`} href='/' >Главная</Link>
         <Link className={` ${pathname === '/tickets' ? 'active' : ''}`} href='/tickets'>Посты</Link>
         </div></div>

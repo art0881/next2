@@ -5,7 +5,12 @@ export default function Home() {
   return (
     <div className='tx-center'><h1>Page</h1>
     <br/>
-    <p className="block_info">Reprehenderit nostrud exercitation ex occaecat cillum laborum veniam dolore qui. Magna aliquip laboris Lorem est mollit cillum in ullamco ipsum sit quis quis. Mollit irure labore nulla occaecat fugiat non veniam cillum ut incididunt. Id do non sit labore sunt tempor pariatur labore elit. Proident cillum mollit nulla veniam laboris culpa est aute eiusmod ullamco proident.
+    <p className="block_info">
+    Next.js — это платформа для создания визуализируемых сервером приложений 
+    JavaScript на основе React.js, Node.js, Webpack и Babel.js. По сути, это шаблон
+     проекта для React, в котором особое внимание уделяется рекомендациям, позволяющим 
+     создавать "универсальные" веб-приложения простым и согласованным способом практически без настройки. 
+    Эти "универсальные" визуализируемые сервером веб-приложения иногда называют изоморфными.
 </p>
 
      </div>
