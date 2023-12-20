@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <header className='header'>
       <div className= {css.flexNavbar}> 
-        <div><img src='/logo.png'></img></div>
+        <div><Image alt='логотип' src='/logo.png'></Image></div>
         <div><Link className={`${pathname === '/' ? 'active' : ''}`} href='/' >Главная</Link>
         <Link className={` ${pathname === '/tickets' ? 'active' : ''}`} href='/tickets'>Посты</Link>
         </div></div>
