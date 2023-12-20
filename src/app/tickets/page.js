@@ -1,6 +1,7 @@
+'use client'
 import React, { Suspense } from 'react'
 import TicketList from './TicketList'
-import Loading from './loading'
+import Loading from '../loading'
 import Link from 'next/link'
 
 const Tickets = () => {

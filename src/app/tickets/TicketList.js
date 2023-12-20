@@ -7,10 +7,13 @@ import { useEffect, useState } from "react";
 const TicketList = () => {
   // вытаскиваем посты запросом get
   const [data, setData] = useState([]);
-  useEffect(() => {
-      fetch("http://localhost:4000/tickets").then(res => res.json())
-      .then(json => setData(json));
-  }, []);
+ 
+
+    useEffect(() => {
+        fetch("http://localhost:4000/tickets").then(res => res.json())
+        .then(json => setData(json));
+    }, []);
+
   // const data = await getTicket();
   //  создаем количество постов
   const len = data.length;
