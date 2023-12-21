@@ -1,19 +1,27 @@
 .post_block{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .color_white{
     color: white;
     text-shadow: 0px 0px 2px black;
 }
-
+.post_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .block_info{
   padding: 10px;
   width: 100%;
     border-radius: 10px;
     margin-bottom: 5px;
     background: #ffffffb8;
+
 }
+
+
 .block_create{
     padding: 10px;
     background: #ffffffb8;
