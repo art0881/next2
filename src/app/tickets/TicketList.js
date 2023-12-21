@@ -13,8 +13,10 @@ const TicketList = () => {
     useEffect(() => {
         fetch("http://localhost:4000/tickets")
         .then(res => res.json())
-        .then(json => {setData(json);
+        .then(json => {;
         setIsLoading(false);
+        const sortedData = json.sort((a) => new Date(a.date));
+        setData(sortedData.reverse());
       });
     }, []);
 
