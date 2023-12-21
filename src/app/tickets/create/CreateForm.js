@@ -9,23 +9,21 @@ export default function CreateForm() {
     const [after,setAfter] = useState('');
     const[loading, setLoading] = useState(false);
 
-    const Submit = async (e) =>{
+    const Submit =  (e) =>{
         e.preventDefault();
         setLoading(true);
         const form = {
           title,body
         }
-        const res = await fetch('http://localhost:4000/tickets',{
+         fetch('http://localhost:4000/tickets',{
             method:"Post",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(form)
         })
 
-        if(res.status === 201){
-          
-            router.refresh();
+            
             router.push('/tickets');
-        }
+        
     }
   return (
     <>
@@ -33,7 +31,7 @@ export default function CreateForm() {
     <form className="tx-center" onSubmit={Submit}>
       <h3>Заголовок</h3>
       <input required type='text' value={title} onChange={(e)=>{setTitle(e.target.value)}} />
-      <h3>Текс</h3>
+      <h3>Текст</h3>
       <input required type='text' value={body} onChange={(e)=>{setBody(e.target.value)}} /><br/><br/>
       <button className='button' disabled={loading}>
         {loading && <span>Загружается...</span>}

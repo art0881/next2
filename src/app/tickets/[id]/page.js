@@ -1,34 +1,50 @@
 "use client"
-import { PageNotFoundError } from "next/dist/shared/lib/utils";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import css from '../tickets.module.css';
+import { useEffect, useState } from "react";
+import Loading from '../../loading'
 
-
-
-export default async function TicketId({params}) {
+export default function TicketId({ params }) {
   const router = useRouter();
-  async function getTicket(id){
-      const res = await fetch('http://localhost:4000/tickets/'+ id, { cache: 'no-store' });
-      const data = await res.json();
-      return data;
-  }
+  const [ticket, setTicket] = useState(null);
+  const { id } = params;
+  const [isLoading, setIsLoading] = useState(true); 
+  useEffect(() => {
+    fetch(`http://localhost:4000/tickets/${id}`)
+      .then(res => res.json())
+      .then(json => {setTicket(json);
+        setIsLoading(false);
+      });
+  }, [id]);
+
+  const deleteTicket = () => {
+    fetch(`http://localhost:4000/tickets/${ticket.id}`, { method: 'DELETE' })
   
-   async function Delete(id) {
-    const res = await fetch('http://localhost:4000/tickets/'+ id,{
-      method:'Delete',
-  });
-  router.refresh();
-            router.push('/tickets');
+        router.push('/tickets');
+  };
+  if (isLoading) {
+    return <Loading />;
   }
-  const ticket = await getTicket(params.id);
+
   return (
-    <div className={css.block_info}>
-       <div className="flex_block_info"><h2>{ticket.title}</h2><div><Link href="/tickets"><button className="button" > Назад</button></Link>
-       <button className="button" onClick={()=>Delete(ticket.id)}>Удалить</button></div>
-       </div>
-        <h4>{ticket.user_email}</h4>
-        <p>{ticket.body}</p>
+    <>
+    
+      {ticket && (
+        <div className={css.block_info}>
+          <div className="flex_block_info">
+            <h2>{ticket.title}</h2>
+            <div>
+              <Link href="/tickets">
+                <button className="button"> Назад</button>
+              </Link>
+              <button className="button" onClick={deleteTicket}>Удалить</button>
+            </div>
+          </div>
+          <h4>{ticket.user_email}</h4>
+          <p>{ticket.body}</p>
         </div>
-  )
+      )}
+    </>
+  );
 }

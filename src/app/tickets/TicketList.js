@@ -1,20 +1,24 @@
 "use client";
 import Tickets from "./page";
 import Link from "next/link";
+import Loading from '../loading'
 import css from "./tickets.module.css";
 import { useEffect, useState } from "react";
 
 const TicketList = () => {
   // вытаскиваем посты запросом get
   const [data, setData] = useState([]);
- 
+  const [isLoading, setIsLoading] = useState(true); 
 
     useEffect(() => {
-        fetch("http://localhost:4000/tickets").then(res => res.json())
-        .then(json => setData(json));
+        fetch("http://localhost:4000/tickets")
+        .then(res => res.json())
+        .then(json => {setData(json);
+        setIsLoading(false);
+      });
     }, []);
 
-  // const data = await getTicket();
+
   //  создаем количество постов
   const len = data.length;
   function getBlogWordEnding(len) {
@@ -26,10 +30,13 @@ const TicketList = () => {
       return "блогов";
     }
   }
-  // с
+  
   return (
     <div>
-      {data.length === 0 ? (
+      
+      {isLoading ? ( // Проверяем состояние загрузки для отображения нужного контента
+      <Loading/>
+      ) : data.length === 0 ? (
         <>
           <div className="flex-none">
             <h3>Нет блогов</h3>
