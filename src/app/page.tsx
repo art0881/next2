@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function Home() {
+const Home: React.FC=()=> {
   
   return (
     <div className='tx-center'><h1>Page</h1>
@@ -14,3 +14,4 @@ export default function Home() {
      </div>
   )
 }
+export default Home;
