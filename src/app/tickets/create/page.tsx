@@ -1,10 +1,13 @@
-import React from 'react'
-import CreateForm from './CreateForm'
+import React from 'react';
+import CreateForm from './CreateForm';
 
-export default async function Create() {
+const Create:React.FC = () => {
   return (
-    <div><h2>Создайте публикацию</h2>
-     <CreateForm/>
+    <div>
+      <h2>Создайте публикацию</h2>
+      <CreateForm />
     </div>
-  )
-}
+  );
+};
+
+export default Create;

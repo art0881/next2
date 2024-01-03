@@ -2,14 +2,14 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation';
 import css from '../tickets.module.css';
+
 export default function CreateForm() {
     const router = useRouter();
     const [title,setTitle] = useState('');
     const [body,setBody] = useState('');
-    const [after,setAfter] = useState('');
     const[loading, setLoading] = useState(false);
 
-    const Submit =  (e) =>{
+    const Submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
         const form = {
@@ -19,10 +19,9 @@ export default function CreateForm() {
             method:"Post",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(form)
+        }).then(() => {
+          router.push('/tickets');
         })
-
-            
-            router.push('/tickets');
         
     }
   return (

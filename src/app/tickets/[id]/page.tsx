@@ -4,8 +4,10 @@ import { useRouter } from 'next/navigation';
 import css from '../tickets.module.css';
 import { useEffect, useState } from "react";
 import Loading from '../../loading'
+import { Ticket, TicketIdProps } from '../../interface/tickets';
 
-export default function TicketId({ params }) {
+
+const TicketId: React.FC<TicketIdProps>=({ params })=> {
   const router = useRouter();
   const [ticket, setTicket] = useState(null);
   const { id } = params;
@@ -48,3 +50,4 @@ export default function TicketId({ params }) {
     </>
   );
 }
+export default TicketId;

@@ -1,11 +1,12 @@
 'use client'
-import React from 'react'
+import React,{FC} from 'react'
 import css from './Header.module.css'
 import Link from 'next/link'
 import '../globals.css'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-const Navbar = () => {
+
+const Navbar:FC = () => {
    const pathname = usePathname()
   return (
     <header className='header'>

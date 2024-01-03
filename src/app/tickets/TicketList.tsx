@@ -4,26 +4,26 @@ import Link from "next/link";
 import Loading from '../loading'
 import css from "./tickets.module.css";
 import { useEffect, useState } from "react";
+import { Ticket } from "../interface/tickets";
 
-const TicketList = () => {
+const TicketList:React.FC = () => {
   // вытаскиваем посты запросом get
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [data, setData] = useState<Ticket[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true); 
 
     useEffect(() => {
         fetch("http://localhost:4000/tickets")
         .then(res => res.json())
-        .then(json => {;
+        .then((json: Ticket[]) => {
         setIsLoading(false);
-        const sortedData = json.sort((a) => new Date(a.date));
-        setData(sortedData.reverse());
+        setData(json.reverse());
       });
     }, []);
 
 
   //  создаем количество постов
-  const len = data.length;
-  function getBlogWordEnding(len) {
+  const len:number = data.length;
+  const getBlogWordEnding = (len:number) => {
     if (len === 1) {
       return "блог";
     } else if (len > 1 && len < 5) {
@@ -52,7 +52,7 @@ const TicketList = () => {
           <div className={css.post_block}>
             <h3>
               {len} {getBlogWordEnding(len)}
-            </h3>{" "}
+            </h3>
             <h3>
               <Link className={css.color_white} href="tickets/create">
                 Создать пост
